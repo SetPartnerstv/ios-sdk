@@ -20,7 +20,7 @@ fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAP
   typealias Version = _2
 }
 
-public enum Pb_MobileEventType: SwiftProtobuf.Enum {
+public enum Pbv1_MobileEventType: SwiftProtobuf.Enum {
   public typealias RawValue = Int
   case mobileEventUnspecified // = 0
   case mobileEventGooglepayIsReadyToPayRequest // = 1
@@ -113,9 +113,9 @@ public enum Pb_MobileEventType: SwiftProtobuf.Enum {
 
 #if swift(>=4.2)
 
-extension Pb_MobileEventType: CaseIterable {
+extension Pbv1_MobileEventType: CaseIterable {
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  public static var allCases: [Pb_MobileEventType] = [
+  public static var allCases: [Pbv1_MobileEventType] = [
     .mobileEventUnspecified,
     .mobileEventGooglepayIsReadyToPayRequest,
     .mobileEventGooglepayIsReadyToPayResponse,
@@ -144,7 +144,7 @@ extension Pb_MobileEventType: CaseIterable {
 
 #endif  // swift(>=4.2)
 
-public enum Pb_MobileAnalyticsEventType: SwiftProtobuf.Enum {
+public enum Pbv1_MobileAnalyticsEventType: SwiftProtobuf.Enum {
   public typealias RawValue = Int
   case unspecified // = 0
   case androidAppInstallReferrer // = 1
@@ -180,9 +180,9 @@ public enum Pb_MobileAnalyticsEventType: SwiftProtobuf.Enum {
 
 #if swift(>=4.2)
 
-extension Pb_MobileAnalyticsEventType: CaseIterable {
+extension Pbv1_MobileAnalyticsEventType: CaseIterable {
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  public static var allCases: [Pb_MobileAnalyticsEventType] = [
+  public static var allCases: [Pbv1_MobileAnalyticsEventType] = [
     .unspecified,
     .androidAppInstallReferrer,
     .androidIauInstall,
@@ -192,35 +192,35 @@ extension Pb_MobileAnalyticsEventType: CaseIterable {
 
 #endif  // swift(>=4.2)
 
-public struct Pb_MobileEvent {
+public struct Pbv1_MobileEvent {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var type: Pb_MobileEventType = .mobileEventUnspecified
+  public var type: Pbv1_MobileEventType = .mobileEventUnspecified
 
-  public var payload: Pb_MobileEvent.OneOf_Payload? = nil
+  public var payload: Pbv1_MobileEvent.OneOf_Payload? = nil
 
-  public var error: Pb_MobileError {
+  public var error: Pbv1_MobileError {
     get {
       if case .error(let v)? = payload {return v}
-      return Pb_MobileError()
+      return Pbv1_MobileError()
     }
     set {payload = .error(newValue)}
   }
 
-  public var isReadyToPayRequest: Pb_IsReadyToPayRequest {
+  public var isReadyToPayRequest: Pbv1_IsReadyToPayRequest {
     get {
       if case .isReadyToPayRequest(let v)? = payload {return v}
-      return Pb_IsReadyToPayRequest()
+      return Pbv1_IsReadyToPayRequest()
     }
     set {payload = .isReadyToPayRequest(newValue)}
   }
 
-  public var paymentDataRequest: Pb_PaymentDataRequest {
+  public var paymentDataRequest: Pbv1_PaymentDataRequest {
     get {
       if case .paymentDataRequest(let v)? = payload {return v}
-      return Pb_PaymentDataRequest()
+      return Pbv1_PaymentDataRequest()
     }
     set {payload = .paymentDataRequest(newValue)}
   }
@@ -233,26 +233,26 @@ public struct Pb_MobileEvent {
     set {payload = .isReadyToPay(newValue)}
   }
 
-  public var paymentData: Pb_PaymentData {
+  public var paymentData: Pbv1_PaymentData {
     get {
       if case .paymentData(let v)? = payload {return v}
-      return Pb_PaymentData()
+      return Pbv1_PaymentData()
     }
     set {payload = .paymentData(newValue)}
   }
 
-  public var applepayPaymentDataRequest: Pb_ApplePayPaymentDataRequest {
+  public var applepayPaymentDataRequest: Pbv1_ApplePayPaymentDataRequest {
     get {
       if case .applepayPaymentDataRequest(let v)? = payload {return v}
-      return Pb_ApplePayPaymentDataRequest()
+      return Pbv1_ApplePayPaymentDataRequest()
     }
     set {payload = .applepayPaymentDataRequest(newValue)}
   }
 
-  public var applepayPaymentData: Pb_ApplePayPaymentData {
+  public var applepayPaymentData: Pbv1_ApplePayPaymentData {
     get {
       if case .applepayPaymentData(let v)? = payload {return v}
-      return Pb_ApplePayPaymentData()
+      return Pbv1_ApplePayPaymentData()
     }
     set {payload = .applepayPaymentData(newValue)}
   }
@@ -273,42 +273,42 @@ public struct Pb_MobileEvent {
     set {payload = .shareURLRequest(newValue)}
   }
 
-  public var applicationParams: Pb_MobileApplicationParams {
+  public var applicationParams: Pbv1_MobileApplicationParams {
     get {
       if case .applicationParams(let v)? = payload {return v}
-      return Pb_MobileApplicationParams()
+      return Pbv1_MobileApplicationParams()
     }
     set {payload = .applicationParams(newValue)}
   }
 
-  public var createKeysRequest: Pb_CreateKeysRequest {
+  public var createKeysRequest: Pbv1_CreateKeysRequest {
     get {
       if case .createKeysRequest(let v)? = payload {return v}
-      return Pb_CreateKeysRequest()
+      return Pbv1_CreateKeysRequest()
     }
     set {payload = .createKeysRequest(newValue)}
   }
 
-  public var createKeysResponse: Pb_CreateKeysResponse {
+  public var createKeysResponse: Pbv1_CreateKeysResponse {
     get {
       if case .createKeysResponse(let v)? = payload {return v}
-      return Pb_CreateKeysResponse()
+      return Pbv1_CreateKeysResponse()
     }
     set {payload = .createKeysResponse(newValue)}
   }
 
-  public var applicationParamsUpdate: Pb_MobileApplicationParamsUpdate {
+  public var applicationParamsUpdate: Pbv1_MobileApplicationParamsUpdate {
     get {
       if case .applicationParamsUpdate(let v)? = payload {return v}
-      return Pb_MobileApplicationParamsUpdate()
+      return Pbv1_MobileApplicationParamsUpdate()
     }
     set {payload = .applicationParamsUpdate(newValue)}
   }
 
-  public var analyticsEvent: Pb_MobileAnalyticsEvent {
+  public var analyticsEvent: Pbv1_MobileAnalyticsEvent {
     get {
       if case .analyticsEvent(let v)? = payload {return v}
-      return Pb_MobileAnalyticsEvent()
+      return Pbv1_MobileAnalyticsEvent()
     }
     set {payload = .analyticsEvent(newValue)}
   }
@@ -324,24 +324,24 @@ public struct Pb_MobileEvent {
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
   public enum OneOf_Payload: Equatable {
-    case error(Pb_MobileError)
-    case isReadyToPayRequest(Pb_IsReadyToPayRequest)
-    case paymentDataRequest(Pb_PaymentDataRequest)
+    case error(Pbv1_MobileError)
+    case isReadyToPayRequest(Pbv1_IsReadyToPayRequest)
+    case paymentDataRequest(Pbv1_PaymentDataRequest)
     case isReadyToPay(Bool)
-    case paymentData(Pb_PaymentData)
-    case applepayPaymentDataRequest(Pb_ApplePayPaymentDataRequest)
-    case applepayPaymentData(Pb_ApplePayPaymentData)
+    case paymentData(Pbv1_PaymentData)
+    case applepayPaymentDataRequest(Pbv1_ApplePayPaymentDataRequest)
+    case applepayPaymentData(Pbv1_ApplePayPaymentData)
     case openURLRequest(String)
     case shareURLRequest(String)
-    case applicationParams(Pb_MobileApplicationParams)
-    case createKeysRequest(Pb_CreateKeysRequest)
-    case createKeysResponse(Pb_CreateKeysResponse)
-    case applicationParamsUpdate(Pb_MobileApplicationParamsUpdate)
-    case analyticsEvent(Pb_MobileAnalyticsEvent)
+    case applicationParams(Pbv1_MobileApplicationParams)
+    case createKeysRequest(Pbv1_CreateKeysRequest)
+    case createKeysResponse(Pbv1_CreateKeysResponse)
+    case applicationParamsUpdate(Pbv1_MobileApplicationParamsUpdate)
+    case analyticsEvent(Pbv1_MobileAnalyticsEvent)
     case clipboardWrite(String)
 
   #if !swift(>=4.1)
-    public static func ==(lhs: Pb_MobileEvent.OneOf_Payload, rhs: Pb_MobileEvent.OneOf_Payload) -> Bool {
+    public static func ==(lhs: Pbv1_MobileEvent.OneOf_Payload, rhs: Pbv1_MobileEvent.OneOf_Payload) -> Bool {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
       // enabled. https://github.com/apple/swift-protobuf/issues/1034
@@ -415,7 +415,7 @@ public struct Pb_MobileEvent {
   public init() {}
 }
 
-public struct Pb_IsReadyToPayRequest {
+public struct Pbv1_IsReadyToPayRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -424,7 +424,7 @@ public struct Pb_IsReadyToPayRequest {
 
   public var apiVersionMinor: UInt32 = 0
 
-  public var allowedPaymentMethods: [Pb_PaymentMethodSpecification] = []
+  public var allowedPaymentMethods: [Pbv1_PaymentMethodSpecification] = []
 
   public var existingPaymentMethodRequired: Bool = false
 
@@ -433,13 +433,13 @@ public struct Pb_IsReadyToPayRequest {
   public init() {}
 }
 
-public struct Pb_PaymentDataRequest {
+public struct Pbv1_PaymentDataRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var merchantInfo: Pb_MerchantInfo {
-    get {return _storage._merchantInfo ?? Pb_MerchantInfo()}
+  public var merchantInfo: Pbv1_MerchantInfo {
+    get {return _storage._merchantInfo ?? Pbv1_MerchantInfo()}
     set {_uniqueStorage()._merchantInfo = newValue}
   }
   /// Returns true if `merchantInfo` has been explicitly set.
@@ -467,8 +467,8 @@ public struct Pb_PaymentDataRequest {
     set {_uniqueStorage()._shippingAddressRequired = newValue}
   }
 
-  public var shippingAddressParameters: Pb_ShippingAddressParameters {
-    get {return _storage._shippingAddressParameters ?? Pb_ShippingAddressParameters()}
+  public var shippingAddressParameters: Pbv1_ShippingAddressParameters {
+    get {return _storage._shippingAddressParameters ?? Pbv1_ShippingAddressParameters()}
     set {_uniqueStorage()._shippingAddressParameters = newValue}
   }
   /// Returns true if `shippingAddressParameters` has been explicitly set.
@@ -476,13 +476,13 @@ public struct Pb_PaymentDataRequest {
   /// Clears the value of `shippingAddressParameters`. Subsequent reads from it will return its default value.
   public mutating func clearShippingAddressParameters() {_uniqueStorage()._shippingAddressParameters = nil}
 
-  public var allowedPaymentMethods: [Pb_PaymentMethodSpecification] {
+  public var allowedPaymentMethods: [Pbv1_PaymentMethodSpecification] {
     get {return _storage._allowedPaymentMethods}
     set {_uniqueStorage()._allowedPaymentMethods = newValue}
   }
 
-  public var transactionInfo: Pb_TransactionInfo {
-    get {return _storage._transactionInfo ?? Pb_TransactionInfo()}
+  public var transactionInfo: Pbv1_TransactionInfo {
+    get {return _storage._transactionInfo ?? Pbv1_TransactionInfo()}
     set {_uniqueStorage()._transactionInfo = newValue}
   }
   /// Returns true if `transactionInfo` has been explicitly set.
@@ -495,8 +495,8 @@ public struct Pb_PaymentDataRequest {
     set {_uniqueStorage()._shippingOptionRequired = newValue}
   }
 
-  public var shippingOptionParameters: Pb_ShippingOptionParameters {
-    get {return _storage._shippingOptionParameters ?? Pb_ShippingOptionParameters()}
+  public var shippingOptionParameters: Pbv1_ShippingOptionParameters {
+    get {return _storage._shippingOptionParameters ?? Pbv1_ShippingOptionParameters()}
     set {_uniqueStorage()._shippingOptionParameters = newValue}
   }
   /// Returns true if `shippingOptionParameters` has been explicitly set.
@@ -511,7 +511,7 @@ public struct Pb_PaymentDataRequest {
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct Pb_MerchantInfo {
+public struct Pbv1_MerchantInfo {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -525,7 +525,7 @@ public struct Pb_MerchantInfo {
   public init() {}
 }
 
-public struct Pb_ShippingAddressParameters {
+public struct Pbv1_ShippingAddressParameters {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -539,7 +539,7 @@ public struct Pb_ShippingAddressParameters {
   public init() {}
 }
 
-public struct Pb_TransactionInfo {
+public struct Pbv1_TransactionInfo {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -560,14 +560,14 @@ public struct Pb_TransactionInfo {
 
   public var checkoutOption: String = String()
 
-  public var displayItems: [Pb_DisplayItem] = []
+  public var displayItems: [Pbv1_DisplayItem] = []
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
   public init() {}
 }
 
-public struct Pb_DisplayItem {
+public struct Pbv1_DisplayItem {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -585,12 +585,12 @@ public struct Pb_DisplayItem {
   public init() {}
 }
 
-public struct Pb_ShippingOptionParameters {
+public struct Pbv1_ShippingOptionParameters {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var shippingOptions: [Pb_ShippingOption] = []
+  public var shippingOptions: [Pbv1_ShippingOption] = []
 
   public var defaultSelectedOptionID: String = String()
 
@@ -599,7 +599,7 @@ public struct Pb_ShippingOptionParameters {
   public init() {}
 }
 
-public struct Pb_ShippingOption {
+public struct Pbv1_ShippingOption {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -615,7 +615,7 @@ public struct Pb_ShippingOption {
   public init() {}
 }
 
-public struct Pb_PaymentData {
+public struct Pbv1_PaymentData {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -635,8 +635,8 @@ public struct Pb_PaymentData {
     set {_uniqueStorage()._email = newValue}
   }
 
-  public var shippingAddress: Pb_Address {
-    get {return _storage._shippingAddress ?? Pb_Address()}
+  public var shippingAddress: Pbv1_Address {
+    get {return _storage._shippingAddress ?? Pbv1_Address()}
     set {_uniqueStorage()._shippingAddress = newValue}
   }
   /// Returns true if `shippingAddress` has been explicitly set.
@@ -644,8 +644,8 @@ public struct Pb_PaymentData {
   /// Clears the value of `shippingAddress`. Subsequent reads from it will return its default value.
   public mutating func clearShippingAddress() {_uniqueStorage()._shippingAddress = nil}
 
-  public var paymentMethodData: Pb_PaymentMethodData {
-    get {return _storage._paymentMethodData ?? Pb_PaymentMethodData()}
+  public var paymentMethodData: Pbv1_PaymentMethodData {
+    get {return _storage._paymentMethodData ?? Pbv1_PaymentMethodData()}
     set {_uniqueStorage()._paymentMethodData = newValue}
   }
   /// Returns true if `paymentMethodData` has been explicitly set.
@@ -653,8 +653,8 @@ public struct Pb_PaymentData {
   /// Clears the value of `paymentMethodData`. Subsequent reads from it will return its default value.
   public mutating func clearPaymentMethodData() {_uniqueStorage()._paymentMethodData = nil}
 
-  public var shippingOptionData: Pb_SelectionOptionData {
-    get {return _storage._shippingOptionData ?? Pb_SelectionOptionData()}
+  public var shippingOptionData: Pbv1_SelectionOptionData {
+    get {return _storage._shippingOptionData ?? Pbv1_SelectionOptionData()}
     set {_uniqueStorage()._shippingOptionData = newValue}
   }
   /// Returns true if `shippingOptionData` has been explicitly set.
@@ -669,7 +669,7 @@ public struct Pb_PaymentData {
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct Pb_SelectionOptionData {
+public struct Pbv1_SelectionOptionData {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -681,15 +681,15 @@ public struct Pb_SelectionOptionData {
   public init() {}
 }
 
-public struct Pb_PaymentMethodData {
+public struct Pbv1_PaymentMethodData {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
   public var type: String = String()
 
-  public var info: Pb_CardInfo {
-    get {return _info ?? Pb_CardInfo()}
+  public var info: Pbv1_CardInfo {
+    get {return _info ?? Pbv1_CardInfo()}
     set {_info = newValue}
   }
   /// Returns true if `info` has been explicitly set.
@@ -699,8 +699,8 @@ public struct Pb_PaymentMethodData {
 
   public var description_p: String = String()
 
-  public var tokenizationData: Pb_PaymentMethodTokenizationData {
-    get {return _tokenizationData ?? Pb_PaymentMethodTokenizationData()}
+  public var tokenizationData: Pbv1_PaymentMethodTokenizationData {
+    get {return _tokenizationData ?? Pbv1_PaymentMethodTokenizationData()}
     set {_tokenizationData = newValue}
   }
   /// Returns true if `tokenizationData` has been explicitly set.
@@ -712,11 +712,11 @@ public struct Pb_PaymentMethodData {
 
   public init() {}
 
-  fileprivate var _info: Pb_CardInfo? = nil
-  fileprivate var _tokenizationData: Pb_PaymentMethodTokenizationData? = nil
+  fileprivate var _info: Pbv1_CardInfo? = nil
+  fileprivate var _tokenizationData: Pbv1_PaymentMethodTokenizationData? = nil
 }
 
-public struct Pb_CardInfo {
+public struct Pbv1_CardInfo {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -725,8 +725,8 @@ public struct Pb_CardInfo {
 
   public var cardDetails: String = String()
 
-  public var billingAddress: Pb_Address {
-    get {return _billingAddress ?? Pb_Address()}
+  public var billingAddress: Pbv1_Address {
+    get {return _billingAddress ?? Pbv1_Address()}
     set {_billingAddress = newValue}
   }
   /// Returns true if `billingAddress` has been explicitly set.
@@ -738,10 +738,10 @@ public struct Pb_CardInfo {
 
   public init() {}
 
-  fileprivate var _billingAddress: Pb_Address? = nil
+  fileprivate var _billingAddress: Pbv1_Address? = nil
 }
 
-public struct Pb_Address {
+public struct Pbv1_Address {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -771,7 +771,7 @@ public struct Pb_Address {
   public init() {}
 }
 
-public struct Pb_PaymentMethodTokenizationData {
+public struct Pbv1_PaymentMethodTokenizationData {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -785,15 +785,15 @@ public struct Pb_PaymentMethodTokenizationData {
   public init() {}
 }
 
-public struct Pb_PaymentMethodSpecification {
+public struct Pbv1_PaymentMethodSpecification {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
   public var type: String = String()
 
-  public var parameters: Pb_CardParameters {
-    get {return _parameters ?? Pb_CardParameters()}
+  public var parameters: Pbv1_CardParameters {
+    get {return _parameters ?? Pbv1_CardParameters()}
     set {_parameters = newValue}
   }
   /// Returns true if `parameters` has been explicitly set.
@@ -801,8 +801,8 @@ public struct Pb_PaymentMethodSpecification {
   /// Clears the value of `parameters`. Subsequent reads from it will return its default value.
   public mutating func clearParameters() {self._parameters = nil}
 
-  public var tokenizationSpecification: Pb_TokenizationSpecification {
-    get {return _tokenizationSpecification ?? Pb_TokenizationSpecification()}
+  public var tokenizationSpecification: Pbv1_TokenizationSpecification {
+    get {return _tokenizationSpecification ?? Pbv1_TokenizationSpecification()}
     set {_tokenizationSpecification = newValue}
   }
   /// Returns true if `tokenizationSpecification` has been explicitly set.
@@ -814,11 +814,11 @@ public struct Pb_PaymentMethodSpecification {
 
   public init() {}
 
-  fileprivate var _parameters: Pb_CardParameters? = nil
-  fileprivate var _tokenizationSpecification: Pb_TokenizationSpecification? = nil
+  fileprivate var _parameters: Pbv1_CardParameters? = nil
+  fileprivate var _tokenizationSpecification: Pbv1_TokenizationSpecification? = nil
 }
 
-public struct Pb_CardParameters {
+public struct Pbv1_CardParameters {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -833,8 +833,8 @@ public struct Pb_CardParameters {
 
   public var billingAddressRequired: Bool = false
 
-  public var billingAddressParameters: Pb_BillingAddressParameters {
-    get {return _billingAddressParameters ?? Pb_BillingAddressParameters()}
+  public var billingAddressParameters: Pbv1_BillingAddressParameters {
+    get {return _billingAddressParameters ?? Pbv1_BillingAddressParameters()}
     set {_billingAddressParameters = newValue}
   }
   /// Returns true if `billingAddressParameters` has been explicitly set.
@@ -842,8 +842,8 @@ public struct Pb_CardParameters {
   /// Clears the value of `billingAddressParameters`. Subsequent reads from it will return its default value.
   public mutating func clearBillingAddressParameters() {self._billingAddressParameters = nil}
 
-  public var cardNetworkParameters: Pb_CardNetworkParameters {
-    get {return _cardNetworkParameters ?? Pb_CardNetworkParameters()}
+  public var cardNetworkParameters: Pbv1_CardNetworkParameters {
+    get {return _cardNetworkParameters ?? Pbv1_CardNetworkParameters()}
     set {_cardNetworkParameters = newValue}
   }
   /// Returns true if `cardNetworkParameters` has been explicitly set.
@@ -855,11 +855,11 @@ public struct Pb_CardParameters {
 
   public init() {}
 
-  fileprivate var _billingAddressParameters: Pb_BillingAddressParameters? = nil
-  fileprivate var _cardNetworkParameters: Pb_CardNetworkParameters? = nil
+  fileprivate var _billingAddressParameters: Pbv1_BillingAddressParameters? = nil
+  fileprivate var _cardNetworkParameters: Pbv1_CardNetworkParameters? = nil
 }
 
-public struct Pb_TokenizationSpecification {
+public struct Pbv1_TokenizationSpecification {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -873,7 +873,7 @@ public struct Pb_TokenizationSpecification {
   public init() {}
 }
 
-public struct Pb_BillingAddressParameters {
+public struct Pbv1_BillingAddressParameters {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -887,7 +887,7 @@ public struct Pb_BillingAddressParameters {
   public init() {}
 }
 
-public struct Pb_CardNetworkParameters {
+public struct Pbv1_CardNetworkParameters {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -903,7 +903,7 @@ public struct Pb_CardNetworkParameters {
   public init() {}
 }
 
-public struct Pb_MobileError {
+public struct Pbv1_MobileError {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -919,7 +919,7 @@ public struct Pb_MobileError {
   public init() {}
 }
 
-public struct Pb_ApplePayPaymentDataRequest {
+public struct Pbv1_ApplePayPaymentDataRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -928,8 +928,8 @@ public struct Pb_ApplePayPaymentDataRequest {
 
   public var currencyCode: String = String()
 
-  public var total: Pb_ApplePayTotal {
-    get {return _total ?? Pb_ApplePayTotal()}
+  public var total: Pbv1_ApplePayTotal {
+    get {return _total ?? Pbv1_ApplePayTotal()}
     set {_total = newValue}
   }
   /// Returns true if `total` has been explicitly set.
@@ -941,10 +941,10 @@ public struct Pb_ApplePayPaymentDataRequest {
 
   public init() {}
 
-  fileprivate var _total: Pb_ApplePayTotal? = nil
+  fileprivate var _total: Pbv1_ApplePayTotal? = nil
 }
 
-public struct Pb_ApplePayTotal {
+public struct Pbv1_ApplePayTotal {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -958,13 +958,13 @@ public struct Pb_ApplePayTotal {
   public init() {}
 }
 
-public struct Pb_ApplePayPaymentData {
+public struct Pbv1_ApplePayPaymentData {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var token: Pb_ApplePayPaymentToken {
-    get {return _token ?? Pb_ApplePayPaymentToken()}
+  public var token: Pbv1_ApplePayPaymentToken {
+    get {return _token ?? Pbv1_ApplePayPaymentToken()}
     set {_token = newValue}
   }
   /// Returns true if `token` has been explicitly set.
@@ -976,10 +976,10 @@ public struct Pb_ApplePayPaymentData {
 
   public init() {}
 
-  fileprivate var _token: Pb_ApplePayPaymentToken? = nil
+  fileprivate var _token: Pbv1_ApplePayPaymentToken? = nil
 }
 
-public struct Pb_ApplePayPaymentToken {
+public struct Pbv1_ApplePayPaymentToken {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -988,8 +988,8 @@ public struct Pb_ApplePayPaymentToken {
 
   public var transactionIdentifier: String = String()
 
-  public var paymentMethod: Pb_ApplePaymentMethod {
-    get {return _paymentMethod ?? Pb_ApplePaymentMethod()}
+  public var paymentMethod: Pbv1_ApplePaymentMethod {
+    get {return _paymentMethod ?? Pbv1_ApplePaymentMethod()}
     set {_paymentMethod = newValue}
   }
   /// Returns true if `paymentMethod` has been explicitly set.
@@ -1001,10 +1001,10 @@ public struct Pb_ApplePayPaymentToken {
 
   public init() {}
 
-  fileprivate var _paymentMethod: Pb_ApplePaymentMethod? = nil
+  fileprivate var _paymentMethod: Pbv1_ApplePaymentMethod? = nil
 }
 
-public struct Pb_ApplePaymentMethod {
+public struct Pbv1_ApplePaymentMethod {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1020,7 +1020,7 @@ public struct Pb_ApplePaymentMethod {
   public init() {}
 }
 
-public struct Pb_MobileApplicationParams {
+public struct Pbv1_MobileApplicationParams {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1041,12 +1041,14 @@ public struct Pb_MobileApplicationParams {
 
   public var myTrackerInstanceID: String = String()
 
+  public var appmetricaDeviceID: String = String()
+
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
   public init() {}
 }
 
-public struct Pb_MobileApplicationParamsUpdate {
+public struct Pbv1_MobileApplicationParamsUpdate {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1064,7 +1066,7 @@ public struct Pb_MobileApplicationParamsUpdate {
   public init() {}
 }
 
-public struct Pb_CreateKeysRequest {
+public struct Pbv1_CreateKeysRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1076,7 +1078,7 @@ public struct Pb_CreateKeysRequest {
   public init() {}
 }
 
-public struct Pb_CreateKeysResponse {
+public struct Pbv1_CreateKeysResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1088,12 +1090,12 @@ public struct Pb_CreateKeysResponse {
   public init() {}
 }
 
-public struct Pb_MobileAnalyticsEvent {
+public struct Pbv1_MobileAnalyticsEvent {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var eventType: Pb_MobileAnalyticsEventType = .unspecified
+  public var eventType: Pbv1_MobileAnalyticsEventType = .unspecified
 
   public var value: String = String()
 
@@ -1113,47 +1115,47 @@ public struct Pb_MobileAnalyticsEvent {
 }
 
 #if swift(>=5.5) && canImport(_Concurrency)
-extension Pb_MobileEventType: @unchecked Sendable {}
-extension Pb_MobileAnalyticsEventType: @unchecked Sendable {}
-extension Pb_MobileEvent: @unchecked Sendable {}
-extension Pb_MobileEvent.OneOf_Payload: @unchecked Sendable {}
-extension Pb_IsReadyToPayRequest: @unchecked Sendable {}
-extension Pb_PaymentDataRequest: @unchecked Sendable {}
-extension Pb_MerchantInfo: @unchecked Sendable {}
-extension Pb_ShippingAddressParameters: @unchecked Sendable {}
-extension Pb_TransactionInfo: @unchecked Sendable {}
-extension Pb_DisplayItem: @unchecked Sendable {}
-extension Pb_ShippingOptionParameters: @unchecked Sendable {}
-extension Pb_ShippingOption: @unchecked Sendable {}
-extension Pb_PaymentData: @unchecked Sendable {}
-extension Pb_SelectionOptionData: @unchecked Sendable {}
-extension Pb_PaymentMethodData: @unchecked Sendable {}
-extension Pb_CardInfo: @unchecked Sendable {}
-extension Pb_Address: @unchecked Sendable {}
-extension Pb_PaymentMethodTokenizationData: @unchecked Sendable {}
-extension Pb_PaymentMethodSpecification: @unchecked Sendable {}
-extension Pb_CardParameters: @unchecked Sendable {}
-extension Pb_TokenizationSpecification: @unchecked Sendable {}
-extension Pb_BillingAddressParameters: @unchecked Sendable {}
-extension Pb_CardNetworkParameters: @unchecked Sendable {}
-extension Pb_MobileError: @unchecked Sendable {}
-extension Pb_ApplePayPaymentDataRequest: @unchecked Sendable {}
-extension Pb_ApplePayTotal: @unchecked Sendable {}
-extension Pb_ApplePayPaymentData: @unchecked Sendable {}
-extension Pb_ApplePayPaymentToken: @unchecked Sendable {}
-extension Pb_ApplePaymentMethod: @unchecked Sendable {}
-extension Pb_MobileApplicationParams: @unchecked Sendable {}
-extension Pb_MobileApplicationParamsUpdate: @unchecked Sendable {}
-extension Pb_CreateKeysRequest: @unchecked Sendable {}
-extension Pb_CreateKeysResponse: @unchecked Sendable {}
-extension Pb_MobileAnalyticsEvent: @unchecked Sendable {}
+extension Pbv1_MobileEventType: @unchecked Sendable {}
+extension Pbv1_MobileAnalyticsEventType: @unchecked Sendable {}
+extension Pbv1_MobileEvent: @unchecked Sendable {}
+extension Pbv1_MobileEvent.OneOf_Payload: @unchecked Sendable {}
+extension Pbv1_IsReadyToPayRequest: @unchecked Sendable {}
+extension Pbv1_PaymentDataRequest: @unchecked Sendable {}
+extension Pbv1_MerchantInfo: @unchecked Sendable {}
+extension Pbv1_ShippingAddressParameters: @unchecked Sendable {}
+extension Pbv1_TransactionInfo: @unchecked Sendable {}
+extension Pbv1_DisplayItem: @unchecked Sendable {}
+extension Pbv1_ShippingOptionParameters: @unchecked Sendable {}
+extension Pbv1_ShippingOption: @unchecked Sendable {}
+extension Pbv1_PaymentData: @unchecked Sendable {}
+extension Pbv1_SelectionOptionData: @unchecked Sendable {}
+extension Pbv1_PaymentMethodData: @unchecked Sendable {}
+extension Pbv1_CardInfo: @unchecked Sendable {}
+extension Pbv1_Address: @unchecked Sendable {}
+extension Pbv1_PaymentMethodTokenizationData: @unchecked Sendable {}
+extension Pbv1_PaymentMethodSpecification: @unchecked Sendable {}
+extension Pbv1_CardParameters: @unchecked Sendable {}
+extension Pbv1_TokenizationSpecification: @unchecked Sendable {}
+extension Pbv1_BillingAddressParameters: @unchecked Sendable {}
+extension Pbv1_CardNetworkParameters: @unchecked Sendable {}
+extension Pbv1_MobileError: @unchecked Sendable {}
+extension Pbv1_ApplePayPaymentDataRequest: @unchecked Sendable {}
+extension Pbv1_ApplePayTotal: @unchecked Sendable {}
+extension Pbv1_ApplePayPaymentData: @unchecked Sendable {}
+extension Pbv1_ApplePayPaymentToken: @unchecked Sendable {}
+extension Pbv1_ApplePaymentMethod: @unchecked Sendable {}
+extension Pbv1_MobileApplicationParams: @unchecked Sendable {}
+extension Pbv1_MobileApplicationParamsUpdate: @unchecked Sendable {}
+extension Pbv1_CreateKeysRequest: @unchecked Sendable {}
+extension Pbv1_CreateKeysResponse: @unchecked Sendable {}
+extension Pbv1_MobileAnalyticsEvent: @unchecked Sendable {}
 #endif  // swift(>=5.5) && canImport(_Concurrency)
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-fileprivate let _protobuf_package = "pb"
+fileprivate let _protobuf_package = "pbv1"
 
-extension Pb_MobileEventType: SwiftProtobuf._ProtoNameProviding {
+extension Pbv1_MobileEventType: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "MOBILE_EVENT_UNSPECIFIED"),
     1: .same(proto: "MOBILE_EVENT_GOOGLEPAY_IS_READY_TO_PAY_REQUEST"),
@@ -1181,7 +1183,7 @@ extension Pb_MobileEventType: SwiftProtobuf._ProtoNameProviding {
   ]
 }
 
-extension Pb_MobileAnalyticsEventType: SwiftProtobuf._ProtoNameProviding {
+extension Pbv1_MobileAnalyticsEventType: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "MOBILE_ANALYTICS_EVENT_TYPE_UNSPECIFIED"),
     1: .same(proto: "MOBILE_ANALYTICS_EVENT_TYPE_ANDROID_APP_INSTALL_REFERRER"),
@@ -1190,7 +1192,7 @@ extension Pb_MobileAnalyticsEventType: SwiftProtobuf._ProtoNameProviding {
   ]
 }
 
-extension Pb_MobileEvent: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension Pbv1_MobileEvent: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".MobileEvent"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "type"),
@@ -1219,7 +1221,7 @@ extension Pb_MobileEvent: SwiftProtobuf.Message, SwiftProtobuf._MessageImplement
       switch fieldNumber {
       case 1: try { try decoder.decodeSingularEnumField(value: &self.type) }()
       case 2: try {
-        var v: Pb_MobileError?
+        var v: Pbv1_MobileError?
         var hadOneofValue = false
         if let current = self.payload {
           hadOneofValue = true
@@ -1232,7 +1234,7 @@ extension Pb_MobileEvent: SwiftProtobuf.Message, SwiftProtobuf._MessageImplement
         }
       }()
       case 3: try {
-        var v: Pb_IsReadyToPayRequest?
+        var v: Pbv1_IsReadyToPayRequest?
         var hadOneofValue = false
         if let current = self.payload {
           hadOneofValue = true
@@ -1245,7 +1247,7 @@ extension Pb_MobileEvent: SwiftProtobuf.Message, SwiftProtobuf._MessageImplement
         }
       }()
       case 4: try {
-        var v: Pb_PaymentDataRequest?
+        var v: Pbv1_PaymentDataRequest?
         var hadOneofValue = false
         if let current = self.payload {
           hadOneofValue = true
@@ -1266,7 +1268,7 @@ extension Pb_MobileEvent: SwiftProtobuf.Message, SwiftProtobuf._MessageImplement
         }
       }()
       case 6: try {
-        var v: Pb_PaymentData?
+        var v: Pbv1_PaymentData?
         var hadOneofValue = false
         if let current = self.payload {
           hadOneofValue = true
@@ -1279,7 +1281,7 @@ extension Pb_MobileEvent: SwiftProtobuf.Message, SwiftProtobuf._MessageImplement
         }
       }()
       case 7: try {
-        var v: Pb_ApplePayPaymentDataRequest?
+        var v: Pbv1_ApplePayPaymentDataRequest?
         var hadOneofValue = false
         if let current = self.payload {
           hadOneofValue = true
@@ -1292,7 +1294,7 @@ extension Pb_MobileEvent: SwiftProtobuf.Message, SwiftProtobuf._MessageImplement
         }
       }()
       case 8: try {
-        var v: Pb_ApplePayPaymentData?
+        var v: Pbv1_ApplePayPaymentData?
         var hadOneofValue = false
         if let current = self.payload {
           hadOneofValue = true
@@ -1321,7 +1323,7 @@ extension Pb_MobileEvent: SwiftProtobuf.Message, SwiftProtobuf._MessageImplement
         }
       }()
       case 11: try {
-        var v: Pb_MobileApplicationParams?
+        var v: Pbv1_MobileApplicationParams?
         var hadOneofValue = false
         if let current = self.payload {
           hadOneofValue = true
@@ -1334,7 +1336,7 @@ extension Pb_MobileEvent: SwiftProtobuf.Message, SwiftProtobuf._MessageImplement
         }
       }()
       case 12: try {
-        var v: Pb_CreateKeysRequest?
+        var v: Pbv1_CreateKeysRequest?
         var hadOneofValue = false
         if let current = self.payload {
           hadOneofValue = true
@@ -1347,7 +1349,7 @@ extension Pb_MobileEvent: SwiftProtobuf.Message, SwiftProtobuf._MessageImplement
         }
       }()
       case 13: try {
-        var v: Pb_CreateKeysResponse?
+        var v: Pbv1_CreateKeysResponse?
         var hadOneofValue = false
         if let current = self.payload {
           hadOneofValue = true
@@ -1360,7 +1362,7 @@ extension Pb_MobileEvent: SwiftProtobuf.Message, SwiftProtobuf._MessageImplement
         }
       }()
       case 14: try {
-        var v: Pb_MobileApplicationParamsUpdate?
+        var v: Pbv1_MobileApplicationParamsUpdate?
         var hadOneofValue = false
         if let current = self.payload {
           hadOneofValue = true
@@ -1373,7 +1375,7 @@ extension Pb_MobileEvent: SwiftProtobuf.Message, SwiftProtobuf._MessageImplement
         }
       }()
       case 15: try {
-        var v: Pb_MobileAnalyticsEvent?
+        var v: Pbv1_MobileAnalyticsEvent?
         var hadOneofValue = false
         if let current = self.payload {
           hadOneofValue = true
@@ -1472,7 +1474,7 @@ extension Pb_MobileEvent: SwiftProtobuf.Message, SwiftProtobuf._MessageImplement
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Pb_MobileEvent, rhs: Pb_MobileEvent) -> Bool {
+  public static func ==(lhs: Pbv1_MobileEvent, rhs: Pbv1_MobileEvent) -> Bool {
     if lhs.type != rhs.type {return false}
     if lhs.payload != rhs.payload {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
@@ -1480,7 +1482,7 @@ extension Pb_MobileEvent: SwiftProtobuf.Message, SwiftProtobuf._MessageImplement
   }
 }
 
-extension Pb_IsReadyToPayRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension Pbv1_IsReadyToPayRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".IsReadyToPayRequest"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "api_version"),
@@ -1520,7 +1522,7 @@ extension Pb_IsReadyToPayRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageI
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Pb_IsReadyToPayRequest, rhs: Pb_IsReadyToPayRequest) -> Bool {
+  public static func ==(lhs: Pbv1_IsReadyToPayRequest, rhs: Pbv1_IsReadyToPayRequest) -> Bool {
     if lhs.apiVersion != rhs.apiVersion {return false}
     if lhs.apiVersionMinor != rhs.apiVersionMinor {return false}
     if lhs.allowedPaymentMethods != rhs.allowedPaymentMethods {return false}
@@ -1530,7 +1532,7 @@ extension Pb_IsReadyToPayRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageI
   }
 }
 
-extension Pb_PaymentDataRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension Pbv1_PaymentDataRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".PaymentDataRequest"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "merchant_info"),
@@ -1546,16 +1548,16 @@ extension Pb_PaymentDataRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
   ]
 
   fileprivate class _StorageClass {
-    var _merchantInfo: Pb_MerchantInfo? = nil
+    var _merchantInfo: Pbv1_MerchantInfo? = nil
     var _apiVersion: UInt32 = 0
     var _apiVersionMinor: UInt32 = 0
     var _emailRequired: Bool = false
     var _shippingAddressRequired: Bool = false
-    var _shippingAddressParameters: Pb_ShippingAddressParameters? = nil
-    var _allowedPaymentMethods: [Pb_PaymentMethodSpecification] = []
-    var _transactionInfo: Pb_TransactionInfo? = nil
+    var _shippingAddressParameters: Pbv1_ShippingAddressParameters? = nil
+    var _allowedPaymentMethods: [Pbv1_PaymentMethodSpecification] = []
+    var _transactionInfo: Pbv1_TransactionInfo? = nil
     var _shippingOptionRequired: Bool = false
-    var _shippingOptionParameters: Pb_ShippingOptionParameters? = nil
+    var _shippingOptionParameters: Pbv1_ShippingOptionParameters? = nil
 
     static let defaultInstance = _StorageClass()
 
@@ -1646,7 +1648,7 @@ extension Pb_PaymentDataRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Pb_PaymentDataRequest, rhs: Pb_PaymentDataRequest) -> Bool {
+  public static func ==(lhs: Pbv1_PaymentDataRequest, rhs: Pbv1_PaymentDataRequest) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -1670,7 +1672,7 @@ extension Pb_PaymentDataRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
   }
 }
 
-extension Pb_MerchantInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension Pbv1_MerchantInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".MerchantInfo"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "merchant_id"),
@@ -1700,7 +1702,7 @@ extension Pb_MerchantInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplemen
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Pb_MerchantInfo, rhs: Pb_MerchantInfo) -> Bool {
+  public static func ==(lhs: Pbv1_MerchantInfo, rhs: Pbv1_MerchantInfo) -> Bool {
     if lhs.merchantID != rhs.merchantID {return false}
     if lhs.merchantName != rhs.merchantName {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
@@ -1708,7 +1710,7 @@ extension Pb_MerchantInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplemen
   }
 }
 
-extension Pb_ShippingAddressParameters: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension Pbv1_ShippingAddressParameters: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".ShippingAddressParameters"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "allowed_country_codes"),
@@ -1738,7 +1740,7 @@ extension Pb_ShippingAddressParameters: SwiftProtobuf.Message, SwiftProtobuf._Me
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Pb_ShippingAddressParameters, rhs: Pb_ShippingAddressParameters) -> Bool {
+  public static func ==(lhs: Pbv1_ShippingAddressParameters, rhs: Pbv1_ShippingAddressParameters) -> Bool {
     if lhs.allowedCountryCodes != rhs.allowedCountryCodes {return false}
     if lhs.phoneNumberRequired != rhs.phoneNumberRequired {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
@@ -1746,7 +1748,7 @@ extension Pb_ShippingAddressParameters: SwiftProtobuf.Message, SwiftProtobuf._Me
   }
 }
 
-extension Pb_TransactionInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension Pbv1_TransactionInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".TransactionInfo"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "transaction_id"),
@@ -1811,7 +1813,7 @@ extension Pb_TransactionInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImple
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Pb_TransactionInfo, rhs: Pb_TransactionInfo) -> Bool {
+  public static func ==(lhs: Pbv1_TransactionInfo, rhs: Pbv1_TransactionInfo) -> Bool {
     if lhs.transactionID != rhs.transactionID {return false}
     if lhs.currencyCode != rhs.currencyCode {return false}
     if lhs.countryCode != rhs.countryCode {return false}
@@ -1826,7 +1828,7 @@ extension Pb_TransactionInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImple
   }
 }
 
-extension Pb_DisplayItem: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension Pbv1_DisplayItem: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".DisplayItem"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "label"),
@@ -1866,7 +1868,7 @@ extension Pb_DisplayItem: SwiftProtobuf.Message, SwiftProtobuf._MessageImplement
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Pb_DisplayItem, rhs: Pb_DisplayItem) -> Bool {
+  public static func ==(lhs: Pbv1_DisplayItem, rhs: Pbv1_DisplayItem) -> Bool {
     if lhs.label != rhs.label {return false}
     if lhs.type != rhs.type {return false}
     if lhs.price != rhs.price {return false}
@@ -1876,7 +1878,7 @@ extension Pb_DisplayItem: SwiftProtobuf.Message, SwiftProtobuf._MessageImplement
   }
 }
 
-extension Pb_ShippingOptionParameters: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension Pbv1_ShippingOptionParameters: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".ShippingOptionParameters"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "shipping_options"),
@@ -1906,7 +1908,7 @@ extension Pb_ShippingOptionParameters: SwiftProtobuf.Message, SwiftProtobuf._Mes
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Pb_ShippingOptionParameters, rhs: Pb_ShippingOptionParameters) -> Bool {
+  public static func ==(lhs: Pbv1_ShippingOptionParameters, rhs: Pbv1_ShippingOptionParameters) -> Bool {
     if lhs.shippingOptions != rhs.shippingOptions {return false}
     if lhs.defaultSelectedOptionID != rhs.defaultSelectedOptionID {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
@@ -1914,7 +1916,7 @@ extension Pb_ShippingOptionParameters: SwiftProtobuf.Message, SwiftProtobuf._Mes
   }
 }
 
-extension Pb_ShippingOption: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension Pbv1_ShippingOption: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".ShippingOption"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "id"),
@@ -1949,7 +1951,7 @@ extension Pb_ShippingOption: SwiftProtobuf.Message, SwiftProtobuf._MessageImplem
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Pb_ShippingOption, rhs: Pb_ShippingOption) -> Bool {
+  public static func ==(lhs: Pbv1_ShippingOption, rhs: Pbv1_ShippingOption) -> Bool {
     if lhs.id != rhs.id {return false}
     if lhs.label != rhs.label {return false}
     if lhs.description_p != rhs.description_p {return false}
@@ -1958,7 +1960,7 @@ extension Pb_ShippingOption: SwiftProtobuf.Message, SwiftProtobuf._MessageImplem
   }
 }
 
-extension Pb_PaymentData: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension Pbv1_PaymentData: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".PaymentData"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "api_version"),
@@ -1973,9 +1975,9 @@ extension Pb_PaymentData: SwiftProtobuf.Message, SwiftProtobuf._MessageImplement
     var _apiVersion: UInt32 = 0
     var _apiVersionMinor: UInt32 = 0
     var _email: String = String()
-    var _shippingAddress: Pb_Address? = nil
-    var _paymentMethodData: Pb_PaymentMethodData? = nil
-    var _shippingOptionData: Pb_SelectionOptionData? = nil
+    var _shippingAddress: Pbv1_Address? = nil
+    var _paymentMethodData: Pbv1_PaymentMethodData? = nil
+    var _shippingOptionData: Pbv1_SelectionOptionData? = nil
 
     static let defaultInstance = _StorageClass()
 
@@ -2046,7 +2048,7 @@ extension Pb_PaymentData: SwiftProtobuf.Message, SwiftProtobuf._MessageImplement
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Pb_PaymentData, rhs: Pb_PaymentData) -> Bool {
+  public static func ==(lhs: Pbv1_PaymentData, rhs: Pbv1_PaymentData) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -2066,7 +2068,7 @@ extension Pb_PaymentData: SwiftProtobuf.Message, SwiftProtobuf._MessageImplement
   }
 }
 
-extension Pb_SelectionOptionData: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension Pbv1_SelectionOptionData: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".SelectionOptionData"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "id"),
@@ -2091,14 +2093,14 @@ extension Pb_SelectionOptionData: SwiftProtobuf.Message, SwiftProtobuf._MessageI
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Pb_SelectionOptionData, rhs: Pb_SelectionOptionData) -> Bool {
+  public static func ==(lhs: Pbv1_SelectionOptionData, rhs: Pbv1_SelectionOptionData) -> Bool {
     if lhs.id != rhs.id {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension Pb_PaymentMethodData: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension Pbv1_PaymentMethodData: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".PaymentMethodData"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "type"),
@@ -2142,7 +2144,7 @@ extension Pb_PaymentMethodData: SwiftProtobuf.Message, SwiftProtobuf._MessageImp
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Pb_PaymentMethodData, rhs: Pb_PaymentMethodData) -> Bool {
+  public static func ==(lhs: Pbv1_PaymentMethodData, rhs: Pbv1_PaymentMethodData) -> Bool {
     if lhs.type != rhs.type {return false}
     if lhs._info != rhs._info {return false}
     if lhs.description_p != rhs.description_p {return false}
@@ -2152,7 +2154,7 @@ extension Pb_PaymentMethodData: SwiftProtobuf.Message, SwiftProtobuf._MessageImp
   }
 }
 
-extension Pb_CardInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension Pbv1_CardInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".CardInfo"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "card_network"),
@@ -2191,7 +2193,7 @@ extension Pb_CardInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementati
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Pb_CardInfo, rhs: Pb_CardInfo) -> Bool {
+  public static func ==(lhs: Pbv1_CardInfo, rhs: Pbv1_CardInfo) -> Bool {
     if lhs.cardNetwork != rhs.cardNetwork {return false}
     if lhs.cardDetails != rhs.cardDetails {return false}
     if lhs._billingAddress != rhs._billingAddress {return false}
@@ -2200,7 +2202,7 @@ extension Pb_CardInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementati
   }
 }
 
-extension Pb_Address: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension Pbv1_Address: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Address"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "name"),
@@ -2270,7 +2272,7 @@ extension Pb_Address: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementatio
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Pb_Address, rhs: Pb_Address) -> Bool {
+  public static func ==(lhs: Pbv1_Address, rhs: Pbv1_Address) -> Bool {
     if lhs.name != rhs.name {return false}
     if lhs.address1 != rhs.address1 {return false}
     if lhs.address2 != rhs.address2 {return false}
@@ -2286,7 +2288,7 @@ extension Pb_Address: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementatio
   }
 }
 
-extension Pb_PaymentMethodTokenizationData: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension Pbv1_PaymentMethodTokenizationData: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".PaymentMethodTokenizationData"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "type"),
@@ -2316,7 +2318,7 @@ extension Pb_PaymentMethodTokenizationData: SwiftProtobuf.Message, SwiftProtobuf
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Pb_PaymentMethodTokenizationData, rhs: Pb_PaymentMethodTokenizationData) -> Bool {
+  public static func ==(lhs: Pbv1_PaymentMethodTokenizationData, rhs: Pbv1_PaymentMethodTokenizationData) -> Bool {
     if lhs.type != rhs.type {return false}
     if lhs.token != rhs.token {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
@@ -2324,7 +2326,7 @@ extension Pb_PaymentMethodTokenizationData: SwiftProtobuf.Message, SwiftProtobuf
   }
 }
 
-extension Pb_PaymentMethodSpecification: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension Pbv1_PaymentMethodSpecification: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".PaymentMethodSpecification"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "type"),
@@ -2363,7 +2365,7 @@ extension Pb_PaymentMethodSpecification: SwiftProtobuf.Message, SwiftProtobuf._M
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Pb_PaymentMethodSpecification, rhs: Pb_PaymentMethodSpecification) -> Bool {
+  public static func ==(lhs: Pbv1_PaymentMethodSpecification, rhs: Pbv1_PaymentMethodSpecification) -> Bool {
     if lhs.type != rhs.type {return false}
     if lhs._parameters != rhs._parameters {return false}
     if lhs._tokenizationSpecification != rhs._tokenizationSpecification {return false}
@@ -2372,7 +2374,7 @@ extension Pb_PaymentMethodSpecification: SwiftProtobuf.Message, SwiftProtobuf._M
   }
 }
 
-extension Pb_CardParameters: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension Pbv1_CardParameters: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".CardParameters"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "allowed_auth_methods"),
@@ -2431,7 +2433,7 @@ extension Pb_CardParameters: SwiftProtobuf.Message, SwiftProtobuf._MessageImplem
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Pb_CardParameters, rhs: Pb_CardParameters) -> Bool {
+  public static func ==(lhs: Pbv1_CardParameters, rhs: Pbv1_CardParameters) -> Bool {
     if lhs.allowedAuthMethods != rhs.allowedAuthMethods {return false}
     if lhs.allowedCardNetworks != rhs.allowedCardNetworks {return false}
     if lhs.allowPrepaidCards != rhs.allowPrepaidCards {return false}
@@ -2444,7 +2446,7 @@ extension Pb_CardParameters: SwiftProtobuf.Message, SwiftProtobuf._MessageImplem
   }
 }
 
-extension Pb_TokenizationSpecification: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension Pbv1_TokenizationSpecification: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".TokenizationSpecification"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "type"),
@@ -2474,7 +2476,7 @@ extension Pb_TokenizationSpecification: SwiftProtobuf.Message, SwiftProtobuf._Me
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Pb_TokenizationSpecification, rhs: Pb_TokenizationSpecification) -> Bool {
+  public static func ==(lhs: Pbv1_TokenizationSpecification, rhs: Pbv1_TokenizationSpecification) -> Bool {
     if lhs.type != rhs.type {return false}
     if lhs.parameters != rhs.parameters {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
@@ -2482,7 +2484,7 @@ extension Pb_TokenizationSpecification: SwiftProtobuf.Message, SwiftProtobuf._Me
   }
 }
 
-extension Pb_BillingAddressParameters: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension Pbv1_BillingAddressParameters: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".BillingAddressParameters"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "format"),
@@ -2512,7 +2514,7 @@ extension Pb_BillingAddressParameters: SwiftProtobuf.Message, SwiftProtobuf._Mes
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Pb_BillingAddressParameters, rhs: Pb_BillingAddressParameters) -> Bool {
+  public static func ==(lhs: Pbv1_BillingAddressParameters, rhs: Pbv1_BillingAddressParameters) -> Bool {
     if lhs.format != rhs.format {return false}
     if lhs.phoneNumberRequired != rhs.phoneNumberRequired {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
@@ -2520,7 +2522,7 @@ extension Pb_BillingAddressParameters: SwiftProtobuf.Message, SwiftProtobuf._Mes
   }
 }
 
-extension Pb_CardNetworkParameters: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension Pbv1_CardNetworkParameters: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".CardNetworkParameters"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "card_network"),
@@ -2555,7 +2557,7 @@ extension Pb_CardNetworkParameters: SwiftProtobuf.Message, SwiftProtobuf._Messag
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Pb_CardNetworkParameters, rhs: Pb_CardNetworkParameters) -> Bool {
+  public static func ==(lhs: Pbv1_CardNetworkParameters, rhs: Pbv1_CardNetworkParameters) -> Bool {
     if lhs.cardNetwork != rhs.cardNetwork {return false}
     if lhs.acquirerBin != rhs.acquirerBin {return false}
     if lhs.acquirerMerchantID != rhs.acquirerMerchantID {return false}
@@ -2564,7 +2566,7 @@ extension Pb_CardNetworkParameters: SwiftProtobuf.Message, SwiftProtobuf._Messag
   }
 }
 
-extension Pb_MobileError: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension Pbv1_MobileError: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".MobileError"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "code"),
@@ -2599,7 +2601,7 @@ extension Pb_MobileError: SwiftProtobuf.Message, SwiftProtobuf._MessageImplement
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Pb_MobileError, rhs: Pb_MobileError) -> Bool {
+  public static func ==(lhs: Pbv1_MobileError, rhs: Pbv1_MobileError) -> Bool {
     if lhs.code != rhs.code {return false}
     if lhs.message != rhs.message {return false}
     if lhs.description_p != rhs.description_p {return false}
@@ -2608,7 +2610,7 @@ extension Pb_MobileError: SwiftProtobuf.Message, SwiftProtobuf._MessageImplement
   }
 }
 
-extension Pb_ApplePayPaymentDataRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension Pbv1_ApplePayPaymentDataRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".ApplePayPaymentDataRequest"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "country_code"),
@@ -2647,7 +2649,7 @@ extension Pb_ApplePayPaymentDataRequest: SwiftProtobuf.Message, SwiftProtobuf._M
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Pb_ApplePayPaymentDataRequest, rhs: Pb_ApplePayPaymentDataRequest) -> Bool {
+  public static func ==(lhs: Pbv1_ApplePayPaymentDataRequest, rhs: Pbv1_ApplePayPaymentDataRequest) -> Bool {
     if lhs.countryCode != rhs.countryCode {return false}
     if lhs.currencyCode != rhs.currencyCode {return false}
     if lhs._total != rhs._total {return false}
@@ -2656,7 +2658,7 @@ extension Pb_ApplePayPaymentDataRequest: SwiftProtobuf.Message, SwiftProtobuf._M
   }
 }
 
-extension Pb_ApplePayTotal: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension Pbv1_ApplePayTotal: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".ApplePayTotal"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "label"),
@@ -2686,7 +2688,7 @@ extension Pb_ApplePayTotal: SwiftProtobuf.Message, SwiftProtobuf._MessageImpleme
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Pb_ApplePayTotal, rhs: Pb_ApplePayTotal) -> Bool {
+  public static func ==(lhs: Pbv1_ApplePayTotal, rhs: Pbv1_ApplePayTotal) -> Bool {
     if lhs.label != rhs.label {return false}
     if lhs.amount != rhs.amount {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
@@ -2694,7 +2696,7 @@ extension Pb_ApplePayTotal: SwiftProtobuf.Message, SwiftProtobuf._MessageImpleme
   }
 }
 
-extension Pb_ApplePayPaymentData: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension Pbv1_ApplePayPaymentData: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".ApplePayPaymentData"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "token"),
@@ -2723,14 +2725,14 @@ extension Pb_ApplePayPaymentData: SwiftProtobuf.Message, SwiftProtobuf._MessageI
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Pb_ApplePayPaymentData, rhs: Pb_ApplePayPaymentData) -> Bool {
+  public static func ==(lhs: Pbv1_ApplePayPaymentData, rhs: Pbv1_ApplePayPaymentData) -> Bool {
     if lhs._token != rhs._token {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension Pb_ApplePayPaymentToken: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension Pbv1_ApplePayPaymentToken: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".ApplePayPaymentToken"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "payment_data"),
@@ -2769,7 +2771,7 @@ extension Pb_ApplePayPaymentToken: SwiftProtobuf.Message, SwiftProtobuf._Message
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Pb_ApplePayPaymentToken, rhs: Pb_ApplePayPaymentToken) -> Bool {
+  public static func ==(lhs: Pbv1_ApplePayPaymentToken, rhs: Pbv1_ApplePayPaymentToken) -> Bool {
     if lhs.paymentData != rhs.paymentData {return false}
     if lhs.transactionIdentifier != rhs.transactionIdentifier {return false}
     if lhs._paymentMethod != rhs._paymentMethod {return false}
@@ -2778,7 +2780,7 @@ extension Pb_ApplePayPaymentToken: SwiftProtobuf.Message, SwiftProtobuf._Message
   }
 }
 
-extension Pb_ApplePaymentMethod: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension Pbv1_ApplePaymentMethod: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".ApplePaymentMethod"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "display_name"),
@@ -2813,7 +2815,7 @@ extension Pb_ApplePaymentMethod: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Pb_ApplePaymentMethod, rhs: Pb_ApplePaymentMethod) -> Bool {
+  public static func ==(lhs: Pbv1_ApplePaymentMethod, rhs: Pbv1_ApplePaymentMethod) -> Bool {
     if lhs.displayName != rhs.displayName {return false}
     if lhs.network != rhs.network {return false}
     if lhs.type != rhs.type {return false}
@@ -2822,7 +2824,7 @@ extension Pb_ApplePaymentMethod: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
   }
 }
 
-extension Pb_MobileApplicationParams: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension Pbv1_MobileApplicationParams: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".MobileApplicationParams"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "user_id"),
@@ -2833,6 +2835,7 @@ extension Pb_MobileApplicationParams: SwiftProtobuf.Message, SwiftProtobuf._Mess
     6: .standard(proto: "biometry_available"),
     7: .standard(proto: "fcm_token"),
     8: .standard(proto: "my_tracker_instance_id"),
+    9: .standard(proto: "appmetrica_device_id"),
   ]
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -2849,6 +2852,7 @@ extension Pb_MobileApplicationParams: SwiftProtobuf.Message, SwiftProtobuf._Mess
       case 6: try { try decoder.decodeSingularBoolField(value: &self.biometryAvailable) }()
       case 7: try { try decoder.decodeSingularStringField(value: &self.fcmToken) }()
       case 8: try { try decoder.decodeSingularStringField(value: &self.myTrackerInstanceID) }()
+      case 9: try { try decoder.decodeSingularStringField(value: &self.appmetricaDeviceID) }()
       default: break
       }
     }
@@ -2879,10 +2883,13 @@ extension Pb_MobileApplicationParams: SwiftProtobuf.Message, SwiftProtobuf._Mess
     if !self.myTrackerInstanceID.isEmpty {
       try visitor.visitSingularStringField(value: self.myTrackerInstanceID, fieldNumber: 8)
     }
+    if !self.appmetricaDeviceID.isEmpty {
+      try visitor.visitSingularStringField(value: self.appmetricaDeviceID, fieldNumber: 9)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Pb_MobileApplicationParams, rhs: Pb_MobileApplicationParams) -> Bool {
+  public static func ==(lhs: Pbv1_MobileApplicationParams, rhs: Pbv1_MobileApplicationParams) -> Bool {
     if lhs.userID != rhs.userID {return false}
     if lhs.deviceID != rhs.deviceID {return false}
     if lhs.confirmationID != rhs.confirmationID {return false}
@@ -2891,12 +2898,13 @@ extension Pb_MobileApplicationParams: SwiftProtobuf.Message, SwiftProtobuf._Mess
     if lhs.biometryAvailable != rhs.biometryAvailable {return false}
     if lhs.fcmToken != rhs.fcmToken {return false}
     if lhs.myTrackerInstanceID != rhs.myTrackerInstanceID {return false}
+    if lhs.appmetricaDeviceID != rhs.appmetricaDeviceID {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension Pb_MobileApplicationParamsUpdate: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension Pbv1_MobileApplicationParamsUpdate: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".MobileApplicationParamsUpdate"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "user_id"),
@@ -2936,7 +2944,7 @@ extension Pb_MobileApplicationParamsUpdate: SwiftProtobuf.Message, SwiftProtobuf
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Pb_MobileApplicationParamsUpdate, rhs: Pb_MobileApplicationParamsUpdate) -> Bool {
+  public static func ==(lhs: Pbv1_MobileApplicationParamsUpdate, rhs: Pbv1_MobileApplicationParamsUpdate) -> Bool {
     if lhs.userID != rhs.userID {return false}
     if lhs.confirmationID != rhs.confirmationID {return false}
     if lhs.passwordEnabled != rhs.passwordEnabled {return false}
@@ -2946,7 +2954,7 @@ extension Pb_MobileApplicationParamsUpdate: SwiftProtobuf.Message, SwiftProtobuf
   }
 }
 
-extension Pb_CreateKeysRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension Pbv1_CreateKeysRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".CreateKeysRequest"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "password"),
@@ -2971,14 +2979,14 @@ extension Pb_CreateKeysRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImp
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Pb_CreateKeysRequest, rhs: Pb_CreateKeysRequest) -> Bool {
+  public static func ==(lhs: Pbv1_CreateKeysRequest, rhs: Pbv1_CreateKeysRequest) -> Bool {
     if lhs.password != rhs.password {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension Pb_CreateKeysResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension Pbv1_CreateKeysResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".CreateKeysResponse"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "public_key"),
@@ -3003,14 +3011,14 @@ extension Pb_CreateKeysResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Pb_CreateKeysResponse, rhs: Pb_CreateKeysResponse) -> Bool {
+  public static func ==(lhs: Pbv1_CreateKeysResponse, rhs: Pbv1_CreateKeysResponse) -> Bool {
     if lhs.publicKey != rhs.publicKey {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension Pb_MobileAnalyticsEvent: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension Pbv1_MobileAnalyticsEvent: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".MobileAnalyticsEvent"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "event_type"),
@@ -3065,7 +3073,7 @@ extension Pb_MobileAnalyticsEvent: SwiftProtobuf.Message, SwiftProtobuf._Message
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Pb_MobileAnalyticsEvent, rhs: Pb_MobileAnalyticsEvent) -> Bool {
+  public static func ==(lhs: Pbv1_MobileAnalyticsEvent, rhs: Pbv1_MobileAnalyticsEvent) -> Bool {
     if lhs.eventType != rhs.eventType {return false}
     if lhs.value != rhs.value {return false}
     if lhs.utmMedium != rhs.utmMedium {return false}
