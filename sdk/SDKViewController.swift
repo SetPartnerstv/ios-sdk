@@ -4,7 +4,7 @@ import PassKit
 import SwiftProtobuf
 
 @objc
-public protocol SDKViewDismissDelegate : NSObjectProtocol {
+public protocol SDKViewDelegate : NSObjectProtocol {
     func sdkViewDismiss(error: Error?)
 }
 
@@ -14,13 +14,12 @@ private var APPSTORE_ID = "1577796889"
 open class SDKViewController: UIViewController, WKScriptMessageHandler, PaymentHandlerDelegate, WKNavigationDelegate, WKUIDelegate {
     
     public var token: String = ""
-    public var baseUrl = "https://widget.ogon.ru"
+    public var baseUrl = "https://widget.gazprombonus.ru"
     public var queryItems: [URLQueryItem] = []
     public var httpUsername = ""
     public var httpPassword = ""
     public var applePayEnabled = false
-    public var isOgonApp = false
-    public weak var dismissDelegate: SDKViewDismissDelegate?
+    public weak var sdkViewDelegate: SDKViewDelegate?
     
     private var webView: WKWebView!
     private var paymentHandler: PaymentHandler!
@@ -90,9 +89,6 @@ open class SDKViewController: UIViewController, WKScriptMessageHandler, PaymentH
         webConfiguration.userContentController.addUserScript(userScript)
         webConfiguration.websiteDataStore =  WKWebsiteDataStore.default()
         
-        if isOgonApp {
-            webConfiguration.userContentController.add(NoopWKScriptMessageHandler(), name: "OgonApp")
-        }
         
         webView = WKWebView(frame: view.bounds, configuration: webConfiguration)
         webView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
@@ -103,11 +99,11 @@ open class SDKViewController: UIViewController, WKScriptMessageHandler, PaymentH
         view.addSubview(webView)
     }
 
-    override public func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
 
         var urlComponents = URLComponents(string: baseUrl)!
-        urlComponents.queryItems = queryItems
+        urlComponents.queryItems = urlComponents.queryItems ?? []
         
         if !token.isEmpty {
             urlComponents.queryItems?.append(URLQueryItem(name: "token", value: token))
@@ -118,12 +114,12 @@ open class SDKViewController: UIViewController, WKScriptMessageHandler, PaymentH
         webView.load(request)
     }
     
-    override public func viewWillAppear(_ animated: Bool) {
+    override open func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
     }
 
-    override public func viewWillDisappear(_ animated: Bool) {
+    override open func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
     }
@@ -151,11 +147,15 @@ open class SDKViewController: UIViewController, WKScriptMessageHandler, PaymentH
         decisionHandler(.allow, pref)
     }
     
-    public func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse,
-                 decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
-
+    public func webView(_ webView: WKWebView,
+                        decidePolicyFor navigationResponse: WKNavigationResponse,
+                        decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
         if let response = navigationResponse.response as? HTTPURLResponse {
             if response.statusCode >= 400 && navigationResponse.isForMainFrame {
+                if response.statusCode == 401, let str = response.allHeaderFields["Server"] as? String, str.caseInsensitiveCompare("QRATOR") == .orderedSame  {
+                    decisionHandler(.allow)
+                    return
+                }
                 //webView.allowsBackForwardNavigationGestures = false
                 self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
                 handleNavigationError(error: NSError(domain: "sdk:webview", code: 1, userInfo: nil))
@@ -199,29 +199,33 @@ open class SDKViewController: UIViewController, WKScriptMessageHandler, PaymentH
         var options = JSONDecodingOptions()
         options.ignoreUnknownFields = true
         
-        if let event = try?	Pb_MobileEvent(jsonString: message.body as! String, options: options) {
+        if let event = try?	Pbv1_MobileEvent(jsonString: message.body as! String, options: options) {
             handleEvent(event: event)
         }
     }
     
     func didAuthorizePayment(payment: PKPayment) {
-        var data = Pb_ApplePayPaymentData()
-        data.token = Pb_ApplePayPaymentToken()
-        data.token.paymentMethod = Pb_ApplePaymentMethod()
+        var data = Pbv1_ApplePayPaymentData()
+        data.token = Pbv1_ApplePayPaymentToken()
+        data.token.paymentMethod = Pbv1_ApplePaymentMethod()
         data.token.paymentData = payment.token.paymentData.base64EncodedString()
         data.token.transactionIdentifier = payment.token.transactionIdentifier
         data.token.paymentMethod.displayName = payment.token.paymentMethod.displayName ?? ""
         data.token.paymentMethod.network = payment.token.paymentMethod.network?.rawValue ?? ""
         data.token.paymentMethod.type = getPaymentMethodTypeName(type: payment.token.paymentMethod.type)
         
-        var event = Pb_MobileEvent()
-        event.type = Pb_MobileEventType.mobileEventApplepayPaymentDataResponse
+        var event = Pbv1_MobileEvent()
+        event.type = Pbv1_MobileEventType.mobileEventApplepayPaymentDataResponse
         event.applepayPaymentData = data
         
         sendEvent(event: event)
     }
     
-    public func sendEvent(event: Pb_MobileEvent) {
+    public func sendEvent(event: Pbv1_MobileEvent) {
+        if (webView == nil) {
+            debugPrint("sendEvent: webView is null")
+            return
+        }
         var options = JSONEncodingOptions()
         options.preserveProtoFieldNames = true
         
@@ -240,21 +244,21 @@ open class SDKViewController: UIViewController, WKScriptMessageHandler, PaymentH
         
     }
     
-    open func handleEvent(event: Pb_MobileEvent) {
+    open func handleEvent(event: Pbv1_MobileEvent) {
         switch event.type {
-        case Pb_MobileEventType.mobileEventApplepayIsReadyToPayRequest:
+        case Pbv1_MobileEventType.mobileEventApplepayIsReadyToPayRequest:
             isReadyToPayRequest()
             break
-        case Pb_MobileEventType.mobileEventApplepayPaymentDataRequest:
+        case Pbv1_MobileEventType.mobileEventApplepayPaymentDataRequest:
             paymentHandler.startPayment(request: event.applepayPaymentDataRequest)
             break
-        case Pb_MobileEventType.mobileEventOpenURLRequest:
+        case Pbv1_MobileEventType.mobileEventOpenURLRequest:
             openURL(url: event.openURLRequest)
             break
-        case Pb_MobileEventType.mobileEventShareURLRequest:
+        case Pbv1_MobileEventType.mobileEventShareURLRequest:
             shareURL(url: event.shareURLRequest)
             break
-        case Pb_MobileEventType.mobileEventReview:
+        case Pbv1_MobileEventType.mobileEventReview:
             openURL(url: "itms-apps://itunes.apple.com/app/id\(APPSTORE_ID)")
             break
             
@@ -265,15 +269,15 @@ open class SDKViewController: UIViewController, WKScriptMessageHandler, PaymentH
     private func navigationStateChange() {
         if (webView.url!.relativeString.hasSuffix("/escape")) {
 //            dismiss(animated: true) {}
-            if let delegate = self.dismissDelegate {
+            if let delegate = self.sdkViewDelegate {
                 delegate.sdkViewDismiss(error: nil)
             }
         }
     }
     
     private func isReadyToPayRequest() {
-        var event = Pb_MobileEvent()
-        event.type = Pb_MobileEventType.mobileEventApplepayIsReadyToPayResponse
+        var event = Pbv1_MobileEvent()
+        event.type = Pbv1_MobileEventType.mobileEventApplepayIsReadyToPayResponse
         event.isReadyToPay = applePayEnabled && paymentHandler.canMakePayments()
         
         sendEvent(event: event)
@@ -296,7 +300,7 @@ open class SDKViewController: UIViewController, WKScriptMessageHandler, PaymentH
     
     private func handleNavigationError(error: Error) {
         if !webView.canGoBack {
-            if let delegate = self.dismissDelegate {
+            if let delegate = self.sdkViewDelegate {
                 delegate.sdkViewDismiss(error: error)
             }
         }
@@ -320,11 +324,6 @@ open class SDKViewController: UIViewController, WKScriptMessageHandler, PaymentH
     }
 }
 
-private class NoopWKScriptMessageHandler : NSObject, WKScriptMessageHandler {
-    func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
-        
-    }
-}
 
 extension String {
     var encodedURL: String {
