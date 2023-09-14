@@ -10,15 +10,5 @@
 * установить зависимости из CocoaPods: `pod install`
 
 
-## Сборка
-
-Universal build:
-
-```sh
-sh build.sh
-```
-
-Артефакты сборки лежат в папке `/build/universal`
-
 ## Cocoapods
 Репозиторий синхронизуется с [GitHub](https://github.com/SetPartnerstv/ios-sdk) и публикуется в Cocoapods, название пакета `GPBonusSDK`.
