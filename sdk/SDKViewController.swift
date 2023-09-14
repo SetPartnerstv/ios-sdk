@@ -99,7 +99,7 @@ open class SDKViewController: UIViewController, WKScriptMessageHandler, PaymentH
         view.addSubview(webView)
     }
 
-    override public func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
 
         var urlComponents = URLComponents(string: baseUrl)!
@@ -114,12 +114,12 @@ open class SDKViewController: UIViewController, WKScriptMessageHandler, PaymentH
         webView.load(request)
     }
     
-    override public func viewWillAppear(_ animated: Bool) {
+    override open func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
     }
 
-    override public func viewWillDisappear(_ animated: Bool) {
+    override open func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
     }
