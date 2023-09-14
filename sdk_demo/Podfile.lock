@@ -1,0 +1,23 @@
+PODS:
+  - GPBonusSDK (2.0.0):
+    - SwiftProtobuf (~> 1.14.0)
+  - SwiftProtobuf (1.14.0)
+
+DEPENDENCIES:
+  - GPBonusSDK (from `../`)
+
+SPEC REPOS:
+  trunk:
+    - SwiftProtobuf
+
+EXTERNAL SOURCES:
+  GPBonusSDK:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  GPBonusSDK: 08cdb05b41d7d66a671f6bf872f115bb3cf37bb7
+  SwiftProtobuf: ed465ed18402f998fd117f631da27e0168e6b59c
+
+PODFILE CHECKSUM: 872a5e1ccdd89d925717b81524605f01e0c23e29
+
+COCOAPODS: 1.12.1

@@ -17,6 +17,6 @@ jobs:
           export LIB_VERSION=$(git describe --tags `git rev-list --tags --max-count=1`)
           set -eo pipefail
           pod lib lint --allow-warnings
-          pod trunk push OgonRuSDK.podspec --allow-warnings
+          pod trunk push GPBonusSDK.podspec --allow-warnings
         env:
           COCOAPODS_TRUNK_TOKEN: ${{ secrets.COCOAPODS_TRUNK_TOKEN }}

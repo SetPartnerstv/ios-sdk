@@ -11,7 +11,7 @@ class PaymentHandler : NSObject, PKPaymentAuthorizationControllerDelegate {
         return PKPaymentAuthorizationController.canMakePayments()
     }
     
-    func startPayment(request: Pb_ApplePayPaymentDataRequest) {
+    func startPayment(request: Pbv1_ApplePayPaymentDataRequest) {
         let total = PKPaymentSummaryItem(label: request.total.label, amount: NSDecimalNumber(string: request.total.amount), type: .final)
         let paymentRequest = PKPaymentRequest()
         paymentRequest.paymentSummaryItems = [total]
