@@ -23,6 +23,8 @@ class ViewController: UIViewController {
 
     @objc func didTapWidgetButton() {
         let sdkView = WidgetViewController()
+        //TODO: place your token here
+        //sdkView.token = "YOUR_TOKEN"
         sdkView.baseUrl = "https://widget.gazprombonus.ru"
         
         navigationController?.pushViewController(sdkView, animated: true)

@@ -3,6 +3,27 @@ derived_data
 .idea
 
 # CocoaPods
-Pods
+Pods/
 
 .DS_Store
+
+.DS_Store
+.vscode/
+
+build/
+*.ipa
+*.app.dSym.zip
+*.xcarchive
+
+*.log
+
+*.xcworkspace
+*.xcworkspace/*
+*.xcuserstate
+
+.swiftpm/config/registries.json
+.swiftpm/xcode/xcuserdata
+.swiftpm/xcode/package.xcworkspace
+.swiftpm/xcode/package.xcworkspace/contents.xcworkspacedata
+
+.netrc

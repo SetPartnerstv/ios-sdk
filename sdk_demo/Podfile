@@ -2,6 +2,5 @@ platform :ios, '12.4'
 use_frameworks!
 
 target 'GazpromBonusSDK' do
-  # pod 'GPBonusSDK', '~> 2.0.0'
   pod 'GPBonusSDK', :path => '../'
 end
