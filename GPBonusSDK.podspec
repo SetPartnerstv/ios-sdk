@@ -5,7 +5,7 @@ Pod::Spec.new do |spec|
   spec.homepage     = "https://github.com/SetPartnerstv/ios-sdk"
   spec.license      = { :type => "MIT", :file => "LICENSE" }
   spec.author       = "SetPartnerstv"
-  spec.platform     = :ios, "11.0"
+  spec.platform     = :ios, "12.0"
   spec.source       = { :git => "https://github.com/SetPartnerstv/ios-sdk.git", :tag => "#{spec.version}" }
   spec.source_files = "sdk/**/*.{swift,h,m}"
   spec.requires_arc = true
