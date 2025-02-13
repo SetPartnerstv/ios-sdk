@@ -78,6 +78,10 @@ open class SDKViewController: UIViewController, WKScriptMessageHandler, PaymentH
                     if (window.PNWidget.onready) {
                         window.PNWidget.onready();
                     }
+            
+                    window.addEventListener('webViewClose', (e) => {
+                        window.webkit.messageHandlers.PNWidget.postMessage('webViewClose');
+                    });
                 })()
             """,
             injectionTime: WKUserScriptInjectionTime.atDocumentStart,
@@ -149,6 +153,10 @@ open class SDKViewController: UIViewController, WKScriptMessageHandler, PaymentH
         decisionHandler(.allow, pref)
     }
     
+    public func webViewWebContentProcessDidTerminate(webView: WKWebView){
+        webView.reload();
+    }
+    
     public func webView(_ webView: WKWebView,
                         decidePolicyFor navigationResponse: WKNavigationResponse,
                         decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
@@ -195,6 +203,13 @@ open class SDKViewController: UIViewController, WKScriptMessageHandler, PaymentH
         
         if (message.name == "navigationStateChange") {
             navigationStateChange();
+            return;
+        }
+        
+        if (message.body as! String == "webViewClose") {
+            if let delegate = self.sdkViewDelegate {
+                delegate.sdkViewDismiss(error: nil)
+            }
             return;
         }
         
