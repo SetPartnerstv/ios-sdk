@@ -307,10 +307,17 @@ open class SDKViewController: UIViewController, WKScriptMessageHandler, PaymentH
     }
     
     private func shareURL(url: String) {
-        if let link = URL(string: url.encodedURL) {
-            let activityViewController = UIActivityViewController(activityItems: [link], applicationActivities: nil)
-            activityViewController.excludedActivityTypes = [.airDrop, .mail]
-            
+        var items:[Any] = [Any]()
+        if let link = URL(string: url) {
+            items.append(link)
+        }
+        else {
+            items.append(url)
+        }
+        if items.count > 0 {
+            let activityViewController = UIActivityViewController(activityItems: items, applicationActivities: nil)
+            activityViewController.excludedActivityTypes = [.airDrop]
+
             present(activityViewController, animated: true)
         }
     }
