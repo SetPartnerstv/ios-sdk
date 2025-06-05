@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name         = "GPBonusSDK"
-  spec.version      = ENV['LIB_VERSION'] || "2.0.2"
+  spec.version      = ENV['LIB_VERSION'] || "2.1.0"
   spec.summary      = "GazpromBonus widget integration lib"
   spec.homepage     = "https://github.com/SetPartnerstv/ios-sdk"
   spec.license      = { :type => "MIT", :file => "LICENSE" }
