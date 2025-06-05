@@ -35,19 +35,19 @@ open class SDKViewController: UIViewController, WKScriptMessageHandler, PaymentH
         let preferences = WKPreferences()
         preferences.javaScriptEnabled = true
         preferences.javaScriptCanOpenWindowsAutomatically = true
-        
-        let bundle = Bundle(for: SDKViewController.self)
-        let version = bundle.infoDictionary!["CFBundleShortVersionString"] as! String
-        let build = bundle.infoDictionary!["CFBundleVersion"] as! String
-        
+
+        let version = "2.1.0"
+        let build = "22"
+
         let userScript = WKUserScript(
             source: """
                 (function(){
                     window.PNWidget = window.PNWidget || {};
                     window.PNWidget._listeners = new Set();
-                    window.PNWidget.version = "\(version) (\(build))";
+                    window.PNWidget.version = "\(version)";
+                    window.PNWidget.build = "\(build)";
                     window.PNWidget.platform = "iOS";
-                    window.PNWidget.features = { auth: false };
+                    window.PNWidget.features = { auth: false, share_text: true };
                         
                     window.PNWidget.sendMobileEvent = function sendMobileEvent(event) {
                         window.webkit.messageHandlers.PNWidget.postMessage(JSON.stringify(event));
@@ -307,10 +307,17 @@ open class SDKViewController: UIViewController, WKScriptMessageHandler, PaymentH
     }
     
     private func shareURL(url: String) {
-        if let link = URL(string: url.encodedURL) {
-            let activityViewController = UIActivityViewController(activityItems: [link], applicationActivities: nil)
-            activityViewController.excludedActivityTypes = [.airDrop, .mail]
-            
+        var items:[Any] = [Any]()
+        if let link = URL(string: url) {
+            items.append(link)
+        }
+        else {
+            items.append(url)
+        }
+        if items.count > 0 {
+            let activityViewController = UIActivityViewController(activityItems: items, applicationActivities: nil)
+            activityViewController.excludedActivityTypes = [.airDrop]
+
             present(activityViewController, animated: true)
         }
     }
