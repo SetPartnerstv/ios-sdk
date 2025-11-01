@@ -1,5 +1,5 @@
 PODS:
-  - GPBonusSDK (2.0.2):
+  - GPBonusSDK (2.2.0):
     - SwiftProtobuf (~> 1.14.0)
   - SwiftProtobuf (1.14.0)
 
@@ -15,7 +15,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  GPBonusSDK: 8ebdc32789a29a3e98724e683b655547f13b9fe0
+  GPBonusSDK: 260d613784ead0b1f295464e70b5e92197c384ce
   SwiftProtobuf: ed465ed18402f998fd117f631da27e0168e6b59c
 
 PODFILE CHECKSUM: 3c73ac9aac1f862646b280aa7f07de7eace745dc

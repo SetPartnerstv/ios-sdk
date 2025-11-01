@@ -10,8 +10,14 @@ import GPBonusSDK
 
 class ViewController: UIViewController, SDKViewDelegate {
 
+    @IBOutlet weak var versionLabel: UILabel!
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "Unknown"
+        
+        versionLabel.text = "SDK version: \(version)"
         
         let widgetButton = UIButton(frame: CGRect(x: 0, y: 0, width: 200, height: 50))
         view.addSubview(widgetButton)

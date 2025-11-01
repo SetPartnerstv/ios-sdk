@@ -23,11 +23,16 @@ open class SDKViewController: UIViewController, WKScriptMessageHandler, PaymentH
     public var applePayEnabled = false
     public weak var sdkViewDelegate: SDKViewDelegate?
     
+    public var defaultBrightness = 1.0
+    public var defaultBrightnessChanged = false
+    
     private var webView: WKWebView!
     private var paymentHandler: PaymentHandler!
     
     override public func loadView() {
         super.loadView()
+        
+        CIEANBarcodeGenerator.register()
         
         paymentHandler = PaymentHandler()
         paymentHandler.paymentDelegate = self
@@ -35,17 +40,20 @@ open class SDKViewController: UIViewController, WKScriptMessageHandler, PaymentH
         let preferences = WKPreferences()
         preferences.javaScriptEnabled = true
         preferences.javaScriptCanOpenWindowsAutomatically = true
-
-        let version = "2.1.0"
-        let build = "22"
-
+        
+//        let bundle = Bundle(for: SDKViewController.self)
+//        let version = bundle.infoDictionary!["CFBundleShortVersionString"] as! String
+//        let build = bundle.infoDictionary!["CFBundleVersion"] as! String
+        let versionSDK = "2.2.0"
+        let buildSDK = "2"
+        
         let userScript = WKUserScript(
             source: """
                 (function(){
                     window.PNWidget = window.PNWidget || {};
                     window.PNWidget._listeners = new Set();
-                    window.PNWidget.version = "\(version)";
-                    window.PNWidget.build = "\(build)";
+                    window.PNWidget.version = "\(versionSDK)";
+                    window.PNWidget.build = "\(buildSDK)";
                     window.PNWidget.platform = "iOS";
                     window.PNWidget.features = { auth: false, share_text: true };
                         
@@ -102,6 +110,14 @@ open class SDKViewController: UIViewController, WKScriptMessageHandler, PaymentH
         webView.navigationDelegate = self
         webView.uiDelegate = self
         
+        #if DEBUG
+        if #available(iOS 16.4, *) {
+            webView.isInspectable = true
+        } else {
+            // Fallback on earlier versions
+        }
+        #endif
+                
         view.addSubview(webView)
     }
 
@@ -118,16 +134,32 @@ open class SDKViewController: UIViewController, WKScriptMessageHandler, PaymentH
         let request = URLRequest(url: urlComponents.url!)
         
         webView.load(request)
+        defaultBrightness = UIScreen.main.brightness
     }
     
     override open func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(willResignActiveNotification(_:)), name: UIApplication.willResignActiveNotification, object: nil)
     }
 
     override open func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
+        
+        if (defaultBrightnessChanged) {
+          UIScreen.main.brightness = defaultBrightness
+        }
+        NotificationCenter.default.removeObserver(self, name: UIApplication.willResignActiveNotification, object: nil)
+    }
+    
+    func willResignActiveNotification(_ notification: Notification) {
+      debugPrint("willResignActive")
+      if defaultBrightnessChanged {
+        UIScreen.main.brightness = defaultBrightness
+        defaultBrightnessChanged = false
+      }
     }
     
     public func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
@@ -278,6 +310,12 @@ open class SDKViewController: UIViewController, WKScriptMessageHandler, PaymentH
         case Pbv1_MobileEventType.mobileEventReview:
             openURL(url: "itms-apps://itunes.apple.com/app/id\(APPSTORE_ID)")
             break
+        case Pbv1_MobileEventType.mobileEventSharePromocodeRequest:
+            sharePromocode(promocode: event.promocode)
+            break
+        case Pbv1_MobileEventType.mobileEventBrightnessChange:
+            setBrightness(brightness: event.brightness)
+            break
             
         default: break
         }
@@ -320,6 +358,44 @@ open class SDKViewController: UIViewController, WKScriptMessageHandler, PaymentH
 
             present(activityViewController, animated: true)
         }
+    }
+    
+    private func sharePromocode(promocode: Pbv1_MobileAppPromocodeShare) {
+      var items:[Any] = [Any]()
+      if let promoImg = generateQROrBarcode(from: promocode.valuePromocode, type: promocode.type) {
+        items.append(promoImg)
+      }
+      
+      items.append(promocode.valuePromocode + "\n" + promocode.text)
+      
+      if items.count > 0 {
+        let activityViewController = UIActivityViewController(activityItems: items, applicationActivities: nil)
+        activityViewController.excludedActivityTypes = [.airDrop]
+
+        present(activityViewController, animated: true)
+      }
+    }
+  
+    func generateQROrBarcode(from string: String, type promocodeType: Pbv1_MobileAppPromocodeType) -> UIImage? {
+
+      let image = QRBarCodeGenerator.generateImage(type: QRBarCodeType(rawValue: promocodeType.rawValue) ?? .unspecified,
+                                                   for: string)
+      return image
+
+    }
+  
+  
+    private func setBrightness(brightness: Int32) {
+      debugPrint(brightness)
+      if (brightness > 0) {
+        defaultBrightness = UIScreen.main.brightness
+        defaultBrightnessChanged = true
+        let constrainedBrightness = fmin(fmax(Double(brightness), 0.0), 100.0)
+        UIScreen.main.brightness = CGFloat(constrainedBrightness / 100)
+      } else {
+        UIScreen.main.brightness = defaultBrightness
+        defaultBrightnessChanged = false
+      }
     }
     
     private func handleNavigationError(error: Error) {

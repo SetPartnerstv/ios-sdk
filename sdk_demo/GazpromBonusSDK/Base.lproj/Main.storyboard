@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="lJ5-wJ-g73">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="lJ5-wJ-g73">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -18,8 +18,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GazpromBonus SDK demo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K8r-rl-JWC">
-                                <rect key="frame" x="0.0" y="99" width="393" height="24"/>
+                                <rect key="frame" x="0.0" y="158" width="393" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SDK Version:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nMf-2S-Oaq">
+                                <rect key="frame" x="0.0" y="209" width="393" height="20.333333333333343"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -27,12 +33,18 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="nMf-2S-Oaq" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="5ZG-Rm-eVC"/>
+                            <constraint firstItem="nMf-2S-Oaq" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="QDX-IA-kqR"/>
                             <constraint firstItem="K8r-rl-JWC" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="TKb-gH-0lq"/>
+                            <constraint firstItem="nMf-2S-Oaq" firstAttribute="top" secondItem="K8r-rl-JWC" secondAttribute="bottom" constant="27" id="Yz9-WX-dCa"/>
                             <constraint firstItem="K8r-rl-JWC" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="cMj-RI-SZO"/>
                             <constraint firstItem="K8r-rl-JWC" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="40" id="xKR-W1-xTc"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="NBv-cd-XnG"/>
+                    <connections>
+                        <outlet property="versionLabel" destination="nMf-2S-Oaq" id="Tql-66-gJe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
